@@ -28,10 +28,11 @@ class CompraSerializer(ModelSerializer):
     status = CharField(source="get_status_display", read_only=True)
     itens = ItensCompraSerializer(many=True, read_only=True)
     data = DateTimeField(read_only=True)
+    tipo_pagamento = CharField(source="get_tipo_pagamento_display", read_only=True)
     
     class Meta:
         model = Compra
-        fields = ("id", "usuario", "status", "total", "itens", "data")
+        fields = ("id", "usuario", "status", "total", "itens", "tipo_pagamento", "data")
 
 
 class ItensCompraCreateUpdateSerializer(ModelSerializer):
@@ -91,7 +92,8 @@ class ItensCompraListSerializer(ModelSerializer):
 class CompraListSerializer(ModelSerializer):
     usuario = CharField(source="usuario.email", read_only=True)
     itens = ItensCompraListSerializer(many=True, read_only=True)
+    tipo_pagamento = CharField(source="get_tipo_pagamento_display", read_only=True)
 
     class Meta:
         model = Compra
-        fields = ("id", "usuario", "itens", "total", "data")
+        fields = ("id", "usuario", "itens", "tipo_pagamento", "total", "data")
