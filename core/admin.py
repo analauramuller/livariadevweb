@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
-from core.models import Compra
+from core.models import Compra, ItensCompra
 from core.models.autor import Autor
 from core.models.categoria import Categoria
 from core.models.editora import Editora
@@ -95,3 +95,4 @@ class LivroAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Compra)
+admin.site.register(ItensCompra)
